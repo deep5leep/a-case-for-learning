@@ -1,2 +1,2 @@
 # a-case-for-learning
-this is sample game,maybe its exsit bugs,u need the Easy graphics lib before u running it
+this is a sample game that maybe exsit bugs,the Easy graphics lib must be included when u running it 
