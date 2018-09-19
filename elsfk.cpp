@@ -1,3 +1,4 @@
+//WPP is coming soon
 #include<graphics.h>
 #include<cstdio>
 #define WIDTH 460
@@ -12,7 +13,7 @@ const int tipx=11;
 const int tipy=10;
 const int w=POOLW/SIZE;
 const int h=POOLH/SIZE;
-int style[7][4][4][4]={//¼ÍÂ¼ÆßÖÖĞÎ×´[ÖÖÀà][ĞÎ×´·½Ïò][x][y] 
+int style[7][4][4][4]={//çºªå½•ä¸ƒç§å½¢çŠ¶[ç§ç±»][å½¢çŠ¶æ–¹å‘][x][y] 
 	{
 	 {{0,0,0,0},{0,1,0,0},{1,1,0,0},{0,1,0,0}},//0010
 	 {{0,0,0,0},{1,1,1,0},{0,1,0,0},{0,0,0,0}},//0111
@@ -77,15 +78,15 @@ class Game{
 				pool[x][y]=false;
 				squareColor[x][y]=0;
 			}
-			drawPool();//»­ÓÎÏ·Ö÷³Ø
+			drawPool();//ç”»æ¸¸æˆä¸»æ± 
 			newSquare();
 			drawSquares();
 			gameScene();
-			//ÓÎÏ·½áÊø
+			//æ¸¸æˆç»“æŸ
 			char c;
 			setcolor(WHITE);
-			setfont(14,0,"ºÚÌå");
-			outtextxy(poolx+POOLW/5,pooly+2,"Çë°´Enter¼üÖØĞÂ¿ªÊ¼,Esc½áÊø");
+			setfont(14,0,"é»‘ä½“");
+			outtextxy(poolx+POOLW/5,pooly+2,"è¯·æŒ‰Enteré”®é‡æ–°å¼€å§‹,Escç»“æŸ");
 			while(is_run())
 			{
 				c=getch();
@@ -117,7 +118,7 @@ class Game{
 								;
 							}while(!falling()&&is_run());
 							for(int x=0;x<w;x++)
-							if(pool[x][0])//ÓÎÏ·½áÊø 
+							if(pool[x][0])//æ¸¸æˆç»“æŸ 
 							{
 								gameOver();
 								return;
@@ -140,7 +141,7 @@ class Game{
 						if(falling())
 						{
 						for(int x=0;x<w;x++)
-						if(pool[x][0])//ÓÎÏ·½áÊø 
+						if(pool[x][0])//æ¸¸æˆç»“æŸ 
 						{
 							gameOver();
 							return;
@@ -173,7 +174,7 @@ class Game{
 							drawSquares();
 						}
 					}
-					if(c=='P'||c=='p')//ÔİÍ£¹¦ÄÜ 
+					if(c=='P'||c=='p')//æš‚åœåŠŸèƒ½ 
 					{
 						while(is_run())
 						{
@@ -194,7 +195,7 @@ class Game{
 					if(falling())
 					{
 						for(int x=0;x<w;x++)
-						if(pool[x][0])//ÓÎÏ·½áÊø 
+						if(pool[x][0])//æ¸¸æˆç»“æŸ 
 						{
 							gameOver();
 							return;
@@ -228,13 +229,13 @@ class Game{
 		unsigned int score;
 		color_t realColor;
 		color_t nextColor;
-		void drawPool()//ÓÎÏ·±ß¿òÖ÷³Ø
+		void drawPool()//æ¸¸æˆè¾¹æ¡†ä¸»æ± 
 		{
 			float h,s,v;
 			h=0.0f;
 			s=0.0f; 
 			v=1.0f;
-			for(int i=-1;i<2;i=i+2)//Ö÷³Ø±ß¿ò
+			for(int i=-1;i<2;i=i+2)//ä¸»æ± è¾¹æ¡†
 			for(int j=0;j<4;j++)
 			{
 				setcolor(hsv2rgb(h,s,v-0.25f*(float)j));
@@ -243,7 +244,7 @@ class Game{
 				line(poolx+3+POOLW-i*j,pooly+3+POOLH-i*j,poolx-4+i*j,pooly+3+POOLH-i*j);
 				line(poolx-4+i*j,pooly+3-i*j+POOLH,poolx-4+i*j,pooly-4+i*j);
 			}
-			for(int i=-1;i<2;i=i+2)//ÌáÊ¾±ß¿ò
+			for(int i=-1;i<2;i=i+2)//æç¤ºè¾¹æ¡†
 			for(int j=0;j<4;j++)
 			{
 				setcolor(hsv2rgb(h,s,v-0.25f*(float)j));
@@ -252,12 +253,12 @@ class Game{
 				line(tipx+3+TIPSIZE-i*j,tipy+3+TIPSIZE-i*j,tipx-4+i*j,tipy+3+TIPSIZE-i*j);
 				line(tipx-4+i*j,tipy+3-i*j+TIPSIZE,tipx-4+i*j,tipy-4+i*j);
 			}
-			//ÏÔÊ¾·ÖÊı
+			//æ˜¾ç¤ºåˆ†æ•°
 			char str[16];
-			setfont(24,0,"ºÚÌå");
+			setfont(24,0,"é»‘ä½“");
 			setcolor(WHITE);
 			sprintf(str,"%8d",score);
-			outtextxy(50,200,"·ÖÊı");
+			outtextxy(50,200,"åˆ†æ•°");
 			outtextxy(20,250,str);
 		}
 		bool falling()
@@ -268,16 +269,16 @@ class Game{
 			{
 				int px=squareX[x][y];
 				int py=squareY[x][y];
-				if(square[x][y])//ÓĞ·½¿é
+				if(square[x][y])//æœ‰æ–¹å—
 				{
-					if(py>=h-1)//½Ó´¥µØÃæ
+					if(py>=h-1)//æ¥è§¦åœ°é¢
 					{
 						istouch=true;
 						return istouch;
 					}
 					else
 					{
-						if(pool[px][py+1]&&!square[x][y+1])//½Ó´¥ÆäËû·½¿é 
+						if(pool[px][py+1]&&!square[x][y+1])//æ¥è§¦å…¶ä»–æ–¹å— 
 						{
 							istouch=true;
 							return istouch;
@@ -300,7 +301,7 @@ class Game{
 			number=0;
 			else
 			number++;
-			for(int x=0;x<4;x++)//ÅĞ¶ÏÊÇ·ñ¿ÉÒÔ±ä»» 
+			for(int x=0;x<4;x++)//åˆ¤æ–­æ˜¯å¦å¯ä»¥å˜æ¢ 
 			for(int y=0;y<4;y++) 
 			{
 				if(style[realTransform][number][x][y]&&!square[x][y])
@@ -312,7 +313,7 @@ class Game{
 					realNumber++;
 				}
 			}
-			if(defaultNumber==realNumber)//Âú×ãÔò±ä»» 
+			if(defaultNumber==realNumber)//æ»¡è¶³åˆ™å˜æ¢ 
 			{
 				realDirection=number;
 				for(int x=0;x<4;x++)
@@ -343,9 +344,9 @@ class Game{
 			{
 				int px=squareX[x][y];
 				int py=squareY[x][y];
-				if(square[x][y])//ÓĞ·½¿é
+				if(square[x][y])//æœ‰æ–¹å—
 				{
-					if(px<=0)//½Ó´¥±ß½ç 
+					if(px<=0)//æ¥è§¦è¾¹ç•Œ 
 					{
 						istouch=true;
 						return istouch;
@@ -358,7 +359,7 @@ class Game{
 							istouch=true;
 							return istouch;
 						}
-						if(pool[px-1][py]&&!square[x-1][y])//½Ó´¥ÆäËû·½¿é 
+						if(pool[px-1][py]&&!square[x-1][y])//æ¥è§¦å…¶ä»–æ–¹å— 
 						{
 							istouch=true;
 							return istouch;
@@ -372,9 +373,9 @@ class Game{
 			{
 				int px=squareX[x][y];
 				int py=squareY[x][y];
-				if(square[x][y])//ÓĞ·½¿é
+				if(square[x][y])//æœ‰æ–¹å—
 				{
-					if(px>=w-1)//½Ó´¥±ß½ç 
+					if(px>=w-1)//æ¥è§¦è¾¹ç•Œ 
 					{
 						istouch=true;
 						return istouch;
@@ -387,7 +388,7 @@ class Game{
 							istouch=true;
 							return istouch;
 						}
-						if(pool[px+1][py]&&!square[x+1][y])//½Ó´¥ÆäËû·½¿é 
+						if(pool[px+1][py]&&!square[x+1][y])//æ¥è§¦å…¶ä»–æ–¹å— 
 						{
 							istouch=true;
 							return istouch;
@@ -403,7 +404,7 @@ class Game{
 		}
 		void moveSquare(int direction)
 		{
-			if(direction==40)//ÏÂ 
+			if(direction==40)//ä¸‹ 
 			for(int y=3;y>=0;y--)
 				for(int x=0;x<4;x++)
 				{
@@ -418,7 +419,7 @@ class Game{
 					}
 					squareY[x][y]++;
 				}
-			if(direction==37)//×ó 
+			if(direction==37)//å·¦ 
 			for(int x=0;x<4;x++)
 				for(int y=3;y>=0;y--)
 				{
@@ -433,7 +434,7 @@ class Game{
 					}
 					squareX[x][y]--;
 				}
-			if(direction==39)//ÓÒ
+			if(direction==39)//å³
 			for(int x=3;x>=0;x--)
 				for(int y=3;y>=0;y--)
 				{
@@ -459,7 +460,7 @@ class Game{
 			for(int x=0;x<30;x++)
 			for(int y=0;y<30;y++)
 			putpixel(dx+x,dy+y,hsv2rgb(h,s,v-0.015f*x-0.015f*y));*/
-			float h,s,v;//¾É·ç¸ñ 
+			float h,s,v;//æ—§é£æ ¼ 
 			int dx,dy,size;
 			dx=poolx+x*SIZE;
 			dy=pooly+y*SIZE;
@@ -513,9 +514,9 @@ class Game{
 			{
 				squareX[x][y]=x+3;
 				squareY[x][y]=y;
-				square[x][y]=style[transform][direction][x][y];//¼ÇÂ¼Ä¿Ç°·½¿éÑùÊ½ 
+				square[x][y]=style[transform][direction][x][y];//è®°å½•ç›®å‰æ–¹å—æ ·å¼ 
 			}		
-			for(int y=3;y>=0;y--)//¼ì²âÊÇ·ñÄÜ¹»´´½¨ĞÂ·½¿é 
+			for(int y=3;y>=0;y--)//æ£€æµ‹æ˜¯å¦èƒ½å¤Ÿåˆ›å»ºæ–°æ–¹å— 
 			for(int x=0;x<4;x++)
 			if(square[x][y]&&pool[x+3][y])
 			{
@@ -576,11 +577,11 @@ class Game{
 		color_t int2rgb(int number)
 		{
 			color_t color; 
-			if(number==0) return(color=hsv2rgb(0.0f,1.0f,1.0f));//ºìÉ« 
-			if(number==1) return(color=hsv2rgb(120.0f,1.0f,1.0f));//ÂÌÉ« 
-			if(number==2) return(color=hsv2rgb(25.0f,1.0f,1.0f));//³ÈÉ« 
-			if(number==3) return(color=hsv2rgb(210.0f,1.0f,1.0f));//À¶É« 
-			if(number==4) return(color=hsv2rgb(60.0f,1.0f,1.0f));//»ÆÉ« 
+			if(number==0) return(color=hsv2rgb(0.0f,1.0f,1.0f));//çº¢è‰² 
+			if(number==1) return(color=hsv2rgb(120.0f,1.0f,1.0f));//ç»¿è‰² 
+			if(number==2) return(color=hsv2rgb(25.0f,1.0f,1.0f));//æ©™è‰² 
+			if(number==3) return(color=hsv2rgb(210.0f,1.0f,1.0f));//è“è‰² 
+			if(number==4) return(color=hsv2rgb(60.0f,1.0f,1.0f));//é»„è‰² 
 		}
 		unsigned int rgb2int(color_t color)
 		{
@@ -613,7 +614,7 @@ class Game{
 			if(n!=0)
 			{ 
 				int scoreTemp=0;
-				for(int i=0;i<n;i++)//¼Ó·Ö 
+				for(int i=0;i<n;i++)//åŠ åˆ† 
 				{
 				int colorNumber[5]={0};
 				for(int j=0;j<10;j++)
@@ -695,7 +696,7 @@ int main()
 	randomize();
 	setinitmode(INIT_NOFORCEEXIT);
 	initgraph(WIDTH,HEIGHT);
-	setcaption("¶íÂŞË¹·½¿é-Powered by LR");
+	setcaption("ä¿„ç½—æ–¯æ–¹å—-Powered by LR");
 	setbkmode(TRANSPARENT);
 	while(is_run())
 	Game newgame;
