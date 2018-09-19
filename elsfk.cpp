@@ -1,4 +1,4 @@
-//WPP has been coming!
+//WPP is coming soon
 #include<graphics.h>
 #include<cstdio>
 #define WIDTH 460
