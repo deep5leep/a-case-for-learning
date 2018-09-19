@@ -1,6 +1,6 @@
 /*
   this is a case about static binding and dynamic binding
-  that can help u to understand the difference of its
+  that can help you to understand the difference of its
 */
 #include<iostream>
 using namespace std;
