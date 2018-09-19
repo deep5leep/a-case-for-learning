@@ -1,8 +1,4 @@
-/*
-* a game named eluosi fangkuai
-* for learning
-* author:rpp
-*/
+//WPP is coming soon
 #include<graphics.h>
 #include<cstdio>
 #define WIDTH 460
