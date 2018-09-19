@@ -1,6 +1,6 @@
 /*
-  @wpp & @xpp:
-  i prepared a great feast for you guys
-  i hope that's delicious! 
+  @wpp && @xpp && @rpp && !@gpp:
+  I prepared a great feast for you guys,
+  I hope that's delicious! 
 */
 typedef  int const *(*(**ptr[]))(const void * const);
